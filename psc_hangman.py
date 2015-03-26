@@ -28,15 +28,16 @@ def hangman():
 	for number in range (number_letters):
 		letter_list.append(None)
 	print letter_list
-	guess_letter(letter_list, play_word, blanks)
+	ask4letter(letter_list, play_word, blanks)
 #Prompt user to guess a letter
-def guess_letter(letter_list, play_word, blanks):
+def ask4letter(letter_list, play_word, blanks):
 	guess_letter = raw_input ("Guess a letter from a to z: ").rstrip()
 	valid_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p' 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 	while guess_letter not in valid_letters:
 		print "This is not a valid letter."
-		guess_letter()
+		guess_letter = raw_input ("Guess a letter from a to z: ").rstrip()
 	check_letter(guess_letter, letter_list, play_word, blanks)
+
 #Create function that checks if the letter is in the play_word
 #If the letter given by user is in the word, draw the letter in the corresponding line(s)
 #Is the letter in the next space the same? True/False is x==C print letter
@@ -48,6 +49,8 @@ def check_letter(guess_letter, letter_list, play_word, blanks):
 		if guess_letter == play_word[i]:
 			blanks = list(blanks)
 			blanks[i] = guess_letter
+		else:
+			check_errors(play_word, guess_letter, letter_list, blanks)
 	print blanks
 
 	#call the function to guess letter
@@ -57,14 +60,15 @@ def check_word(blanks, play_word, letter_list):
 	if blanks == play_word:
 		print "You won!"
 	else:
-		guess_letter(letter_list, play_word, blanks)
+		ask4letter(letter_list, play_word, blanks)
 
-def check_errors(play_word):
-	for i in range(6):
-		if guess_letter not in play_word[i]:
-			wrong_letters[i] = guess_letter
-		print "Wrong letter!" + wrong_letters
-	guess_letter(letter_list, play_word, blanks)
+def check_errors(play_word, guess_letter, letter_list, blanks):
+	wrong_letters = []
+	if guess_letter not in play_word and len(wrong_letters)<6:
+		wrong_letters.append(guess_letter)
+	print "Wrong letter!"
+	print wrong_letters
+	ask4letter(letter_list, play_word, blanks)
 			
 ###Draw the hangman:
 ##Draw the pole for the hangman
