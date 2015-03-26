@@ -28,12 +28,14 @@ def hangman():
 	for number in range (number_letters):
 		letter_list.append(None)
 	print letter_list
+	guess_letter(letter_list, play_word, blanks)
 #Prompt user to guess a letter
+def guess_letter(letter_list, play_word, blanks):
 	guess_letter = raw_input ("Guess a letter from a to z: ").rstrip()
 	valid_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p' 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 	while guess_letter not in valid_letters:
 		print "This is not a valid letter."
-		guess_letter = raw_input ("Guess a letter from a to z: ")
+		guess_letter()
 	check_letter(guess_letter, letter_list, play_word, blanks)
 #Create function that checks if the letter is in the play_word
 #If the letter given by user is in the word, draw the letter in the corresponding line(s)
@@ -43,16 +45,27 @@ def hangman():
 #If guessed letter is not in the list, create a list of wrong letters
 def check_letter(guess_letter, letter_list, play_word, blanks):	
 	for i in range(len(letter_list)):
-		if guess_letter in play_word[i]:
+		if guess_letter == play_word[i]:
 			blanks = list(blanks)
 			blanks[i] = guess_letter
-			print str(blanks)
-	return guess_letter
+	print blanks
+
+	#call the function to guess letter
+	check_word(blanks, play_word, letter_list)
 #Did he complete the word? True/False --> End game/Prompt user for new letter
-def check_word(blanks, play_word):
+def check_word(blanks, play_word, letter_list):
 	if blanks == play_word:
 		print "You won!"
-		
+	else:
+		guess_letter(letter_list, play_word, blanks)
+
+def check_errors(play_word):
+	for i in range(6):
+		if guess_letter not in play_word[i]:
+			wrong_letters[i] = guess_letter
+		print "Wrong letter!" + wrong_letters
+	guess_letter(letter_list, play_word, blanks)
+			
 ###Draw the hangman:
 ##Draw the pole for the hangman
 ##Draw underscores for each letter in the chosen word
