@@ -39,3 +39,8 @@ def Playing():
 		###Add n --> quit()
 			
 Playing() #Displays playing without you having to type it
+
+if guess_letter not in play_word:
+				strikeLetters.add(guess_letter)
+				strike_list= "".join([char if char in strikeLetters else "_" for char in play_word])
+				print(" ".join(strike_list))

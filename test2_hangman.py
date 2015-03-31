@@ -1,5 +1,8 @@
 import random
 
+strikeLetters = set()
+strikes = 7
+
 def hangman():
 #Ask user to enter his/her name
 	username = raw_input ("First and Last Name:")
@@ -16,6 +19,10 @@ def hangman():
 #Store blanks in variable and print
 	blanks = "_"*len(play_word)
 	print "Your word has %d letters:" %(len(play_word)) + blanks
+#Create an empty set list for strikes:
+	strikeLetters = set()
+#Set the strikes allotted to 7 chances:
+	
 #Prompt user to guess a letter
 	ask4letter(play_word, blanks)
 #--Check if raw input is valid, else prompt user to give a new letter
@@ -54,28 +61,25 @@ def check_letter(guess_letter, play_word, blanks):
 #If guessed letter is not in word, create list of wrong letters
 def check_strikes(play_word, guess_letter, blanks):
 	#####---Should I add a list of cummulative wrong letters?
-	strikes = 7
-	guessed = False
-	while not guessed and strikes>0: 
+	print "The strikes are %d" %strikes
+	while guess_letter not in play_word and strikes>0:
 		strikes -= 1 #It subtracts 1 form the 7 allotted mistakes
 		####Needs fix, not subtracting
 		print "Wrong letter! You have %d strikes left." %(strikes) 
 		ask4letter(play_word, blanks)
-		if strikes == 0:
-			print "You lost! The word was: "
-			print play_word
-			y=True
-			n=False
-			again = (input("Would you like to go again? [y/n]: "))
-			if again == y:
-				return hangman()
-			else:
-				quit()
+	if strikes == 0:
+		print "You lost! The word was: "
+		print play_word
+		y=True
+		n=False
+		again = (input("Would you like to go again? [y/n]: "))
+		if again == y:
+			return hangman()
+		else:
+			quit()
 
 #####--What happens if user repeats a letter that was already 
 #####--added to guessed blanks/strikes?
-
-#####---Should I add a list of cummulative wrong letters?
 
 ###Draw the hangman:
 ##Draw the pole
