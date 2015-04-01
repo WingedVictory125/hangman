@@ -61,14 +61,13 @@ def playHangman():
 	     =========''']
 	
 	username = raw_input ("First and Last Name: ") #User enters his/her name
-	#Create word lists depending on user
-	if username == 'Alex Lindo':
-		hangman_list = ['koala_sucker']
+	if username == 'Alex Lindo': #Create word lists depending on user
+		hangman_list = ["koala_sucker"]
 	else:
-		hangman_list = ["two", "example", "says", "python", "rocks", "vanilla"]
-	#While loop runs through entire game
+		hangman_list = ["blue","python","rocks","vanilla","ability","about","above","absolute","accessible","accommodation","accounting","beautiful","bookstore","calculator","clever","engineer","refrigerator","opposite","socks","interested","strawberry","anniversary","entertainment","temperature","vacation","scissors","accommodation","appointment"]
+	
 	again = True
-	while again: 
+	while again: #While loop runs through entire game when true
 	
 		play_word = random.choice(hangman_list) #Randomly select a word
 		blanks = "_"*len(play_word) #Store blanks in variable
@@ -85,7 +84,7 @@ def playHangman():
 			print (" ".join(blanks))
 	
 		guessed = False
-		while not guessed and strikes>0:
+		while not guessed and strikes>0: #While loop runs through unguessed word
 			guess_letter = raw_input ("Guess a letter: ").rstrip() #Prompt for letter, check if valid
 			valid_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 			if guess_letter not in valid_letters:

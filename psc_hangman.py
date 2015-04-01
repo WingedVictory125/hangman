@@ -65,7 +65,7 @@ def playHangman():
 	if username == 'Alex Lindo':
 		hangman_list = ['koala_sucker']
 	else:
-		hangman_list = ["two", "example", "says", "python", "rocks", "vanilla"]
+		hangman_list = ["python", "blue", "vanilla"]
 	#While loop runs through entire game
 	again = True
 	while again: 
