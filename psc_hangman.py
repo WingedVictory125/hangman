@@ -61,14 +61,13 @@ def playHangman():
 	     =========''']
 	
 	username = raw_input ("First and Last Name: ") #User enters his/her name
-	#Create word lists depending on user
-	if username == 'Alex Lindo':
+	if username == 'Alex Lindo': #Create word lists depending on user
 		hangman_list = ["koala_sucker"]
 	else:
 		hangman_list = ["python", "blue", "vanilla"]
-	#While loop runs through entire game
+	
 	again = True
-	while again: 
+	while again: #While loop runs through entire game
 	
 		play_word = random.choice(hangman_list) #Randomly select a word
 		blanks = "_"*len(play_word) #Store blanks in variable
@@ -85,7 +84,7 @@ def playHangman():
 			print (" ".join(blanks))
 	
 		guessed = False
-		while not guessed and strikes>0:
+		while not guessed and strikes>0: #While loop runs through unguessed word
 			guess_letter = raw_input ("Guess a letter: ").rstrip() #Prompt for letter, check if valid
 			valid_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 			if guess_letter not in valid_letters:
@@ -111,7 +110,7 @@ def playHangman():
 					else:
 						quit()
 			else:
-				strikes -= 1 #It subtracts 1 from the 6 allotted mistakes
+				strikes -= 1 #Subtracts 1 from the 6 allotted mistakes
 				strikeLetters.add(guess_letter) #Adds wrong letters to set list, prints
 				pic += 1 #Sets the index
 				print "Wrong letter! You have %d strikes left. Wrong letters used: " %(strikes) + ("".join(strikeLetters))

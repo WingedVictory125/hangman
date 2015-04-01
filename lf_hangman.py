@@ -110,7 +110,7 @@ def playHangman():
 					else:
 						quit()
 			else:
-				strikes -= 1 #It subtracts 1 from the 6 allotted mistakes
+				strikes -= 1 #Subtracts 1 from the 6 allotted mistakes
 				strikeLetters.add(guess_letter) #Adds wrong letters to set list, prints
 				pic += 1 #Sets the index
 				print "Wrong letter! You have %d strikes left. Wrong letters used: " %(strikes) + ("".join(strikeLetters))
