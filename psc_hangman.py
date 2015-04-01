@@ -63,7 +63,7 @@ def playHangman():
 	username = raw_input ("First and Last Name: ") #User enters his/her name
 	#Create word lists depending on user
 	if username == 'Alex Lindo':
-		hangman_list = ['koala_sucker']
+		hangman_list = ["koala_sucker"]
 	else:
 		hangman_list = ["python", "blue", "vanilla"]
 	#While loop runs through entire game
